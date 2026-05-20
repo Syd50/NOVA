@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 85e377d7654c6fc4a865daa2a664f846
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TransPoint1: {instanceID: 0}
+  - TransPoint2: {instanceID: 0}
+  - BallPrefab: {fileID: 7753958880584441844, guid: efa5027c2f66fb741bc8ddf599b36277, type: 3}
+  - rb: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
