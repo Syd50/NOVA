@@ -96,7 +96,7 @@ public class RopeScript : MonoBehaviour
             // ----------------  PROBLEM : You can shoot anywhere, towards anything  ------------------
 
             //Level 1 - just restrict a few axis.
-            restrictedPos.x = Mathf.Clamp(worldPos.x, slingCenter.x - 2f, slingCenter.x + 2f);  // left / right
+            restrictedPos.x = Mathf.Clamp(worldPos.x, slingCenter.x - 1f, slingCenter.x + 1f);  // left / right
             restrictedPos.y = Mathf.Clamp(worldPos.y, slingCenter.y - 2f, slingCenter.y + 2);  // up / down
             restrictedPos.z = Mathf.Clamp(worldPos.z, slingCenter.z - 4f, slingCenter.z + -2f);  // forward / back ------- PROBLEM ------ you can shoot at the camera and break game
 
