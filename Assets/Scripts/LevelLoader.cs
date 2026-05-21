@@ -65,7 +65,7 @@ public class LevelLoader : MonoBehaviour
 
         //happens after the fade is done
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+        //yield return null;
         //fade over time
         //We need a start value for the alpha
         // then we need an end value for the alpha

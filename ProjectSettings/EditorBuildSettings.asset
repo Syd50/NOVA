@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/NFTS_LOGO.unity
+    guid: 79656295e0f01004383c680380ba2db0
+  - enabled: 1
     path: Assets/Scenes/MAIN_MENU_START.unity
     guid: e9933b859755e1a4983f8ce0764f3b90
   - enabled: 1
@@ -24,8 +27,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 5.unity
     guid: 853f36cae9a1b61498ebd9a04721dabb
   - enabled: 1
+    path: Assets/Scenes/Level 6.unity
+    guid: 2414961a775c4ae489ac146fcbbbdf76
+  - enabled: 1
+    path: Assets/Scenes/Level 7.unity
+    guid: f396f2a7af7304e45884d24b0ab5e262
+  - enabled: 1
     path: Assets/Scenes/MAIN_MENU_END.unity
-    guid: 03015779ea6704c45a15fed9445148f6
+    guid: b5e7323d7f2195f4c8f0ced789d73c52
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
