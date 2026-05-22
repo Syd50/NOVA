@@ -9,44 +9,71 @@ public class AudioCrossfade : MonoBehaviour
     public AudioSource[] _audioSources; //array of audio sources
     public int audioToggle; // just switches between audio sources
     public AudioClip currentClip; // stores music file itself
-    public AudioSource audioSource; //audio source reference
+    //public AudioSource audioSource; //audio source reference  ISSUE WAS HERE  
+    // FUTURE REFERNECE - array is also a playback system. Cant have two. Track 0 was playing, and track 1 was playing but too far in the future - overlap does nothing
 
     //current system plays one after the other, I need to crossfade, so add an overlap of sorts
-    public double overlapTime = 9.0;
+    public double overlapTime = 20.0;
 
     private void Start()
     {
+        Debug.Log("AudioCrossfade started"); //REACHED
         OnPlayMusic();
     }
+
     private void OnPlayMusic()
     {
-        //uinty's audio clock, its really accurate and is different from game time
-        //+0.5 starts music half a second from now
         goalTime = AudioSettings.dspTime + 0.5;
-        //assign audio clip
-        audioSource.clip = currentClip;
-        //instead of PLAY this one plays at a very specific dsp time
-        audioSource.PlayScheduled(goalTime);
 
-        //how many seconds long is this clip, total audio samples and frequency samples per second
+        _audioSources[audioToggle].clip = currentClip;
+        _audioSources[audioToggle].PlayScheduled(goalTime);
+
         musicDuration = (double)currentClip.samples / currentClip.frequency;
-        //the next clip should be right after this clip
-        //goalTime = goalTime + musicDuration;
         goalTime = goalTime + musicDuration - overlapTime;
+
+        audioToggle = 1 - audioToggle;
     }
+
+
+
+
+    //private void OnPlayMusic()
+    //{
+    //    //uinty's audio clock, its really accurate and is different from game time
+    //    //+0.5 starts music half a second from now
+    //    goalTime = AudioSettings.dspTime + 0.5;
+    //    //assign audio clip
+
+    //    //without these theres NO audio
+    //    //audioSource.clip = currentClip;
+    //    //instead of PLAY this one plays at a very specific dsp time
+    //    //audioSource.PlayScheduled(goalTime);
+
+    //    _audioSources[audioToggle].clip = currentClip;
+    //    _audioSources[audioToggle] = PlayScheduled(goalTime);
+
+    //    //how many seconds long is this clip, total audio samples and frequency samples per second
+    //    musicDuration = (double)currentClip.samples / currentClip.frequency;
+    //    //the next clip should be right after this clip
+    //    //goalTime = goalTime + musicDuration;
+    //    goalTime = goalTime + musicDuration - overlapTime;
+    //}
 
     private void Update()
     {
+        Debug.Log("Update running");
+
         //if we are withihn x amount of seconds from the next loop point then prepare / start the next scheduled clip
-        if (AudioSettings.dspTime > goalTime - 1)
-        {   
+        if (AudioSettings.dspTime > goalTime - 1) //never turns true?
+        {
+            //Debug.Log("DSP: " + AudioSettings.dspTime + " Goal: " + goalTime);
             //this clip - this the overlap logic
             PlayScheduledClip();
         }
     }
 
     private void PlayScheduledClip()
-    {
+    { 
         //_audioSources[audioToggle] - pcik sorce 1 or 0. It depends on the toggle (in inspector)
         _audioSources[audioToggle].clip = currentClip; // load music into chosen source
         _audioSources[audioToggle].PlayScheduled(goalTime); //start it exactly at the goal time (in the future)
@@ -58,6 +85,8 @@ public class AudioCrossfade : MonoBehaviour
 
         //I THINK (DOUBLE CHECK LATER) this bit alternates between 0, 1 then again 0,1,0,1
         audioToggle = 1 - audioToggle;
+
+        Debug.Log("Scheduling next clip at: " + goalTime);
     }
 
     //this should let other scripts change music

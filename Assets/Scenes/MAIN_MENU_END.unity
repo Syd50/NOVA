@@ -3098,7 +3098,7 @@ MonoBehaviour:
   - {fileID: 882029089}
   audioToggle: 0
   currentClip: {fileID: 8300000, guid: 742cd27501df1ce4193acc82de78eb4f, type: 3}
-  overlapTime: 4.96
+  overlapTime: 6
 --- !u!4 &2067224402
 Transform:
   m_ObjectHideFlags: 0
