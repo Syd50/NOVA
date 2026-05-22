@@ -12,7 +12,7 @@ public class AudioCrossfade : MonoBehaviour
     public AudioSource audioSource; //audio source reference
 
     //current system plays one after the other, I need to crossfade, so add an overlap of sorts
-    public double overlapTime = 1.0;
+    public double overlapTime = 9.0;
 
     private void Start()
     {
@@ -38,7 +38,7 @@ public class AudioCrossfade : MonoBehaviour
     private void Update()
     {
         //if we are withihn x amount of seconds from the next loop point then prepare / start the next scheduled clip
-        if (AudioSettings.dspTime > goalTime - 2)
+        if (AudioSettings.dspTime > goalTime - 1)
         {   
             //this clip - this the overlap logic
             PlayScheduledClip();
