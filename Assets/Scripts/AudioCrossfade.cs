@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//this script might end up being the audio manager later
 public class AudioCrossfade : MonoBehaviour
 {
     //type: double offers higher precision for something like timing audio
@@ -66,9 +67,15 @@ public class AudioCrossfade : MonoBehaviour
     }
 
 
+    //maybe this might let the sound continue on while the scene changes? Changing scene seems to cut off the sound
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
 
 }
+
+//layering other tracks
+// nothing shhould be destroyed when changing level
+// and change to new track - current audio becomes a new clip once changed level
+// but not waiting for the current track to reach the end
